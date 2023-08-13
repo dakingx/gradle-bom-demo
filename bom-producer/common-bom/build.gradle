@@ -1,0 +1,30 @@
+plugins {
+    id 'java-platform'
+    id 'maven-publish'
+}
+
+// Declare recommended versions
+dependencies {
+    constraints {
+        api 'org.apache.httpcomponents.client5:httpclient5:5.2'
+        api 'com.squareup.moshi:moshi-kotlin:1.15.0'
+    }
+}
+
+/*
+javaPlatform {
+    allowDependencies()
+}
+*/
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            from components.javaPlatform
+
+            groupId 'tech.daking.mobile'
+            artifactId 'common-bom'
+            version '0.0.1-SNAPSHOT'
+        }
+    }
+}
